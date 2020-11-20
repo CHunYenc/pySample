@@ -7,89 +7,75 @@
     <link rel="icon" href="./img/chuicon.png" sizes="32x32" type="image/png">
     <title>中華大學圖資處教學研究組範例爬蟲網頁</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Required Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+
+    <!-- Required scripts -->
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
     <style>
         * {
             font-family: 'Noto Sans TC', sans-serif;
-
         }
     </style>
-    <!-- <style>
-        * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Noto Sans TC', sans-serif;
-        }
-
-        #header {
-        height: 15vh;
-        width: 100%;
-        text-align: center;
-        background-color: antiquewhite;
-        }
-
-        #header h1 {
-        margin: auto;
-        width: 100%;
-        }
-
-        #header nav li {
-        line-height: 5vh;
-        display: inline;
-        list-style: none;
-        }
-
-        #header nav li:hover {
-        background-color: white;
-        }
-
-        #content table {
-        width: 100%;
-        }
-        </style>
-        -->
 </head>
 
 <body>
-    <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="img/175538168.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-        </a>
-        中華大學圖資處教學研究組範例爬蟲網頁
-    </nav>
-    <div id="content">
-        <table>
-            <thead>
-                <tr>
-                    <th>Hello1</th>
-                    <th>Hello2</th>
-                    <th>Hello3</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Hellobody</td>
-                </tr>
-                <tr>
-                    <td>Hellobody</td>
-                </tr>
-                <tr>
-                    <td>Hellobody</td>
-                </tr>
-                <tr>
-                    <td>Hellobody</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Our application root element -->
+    <div id="app">
+        <!-- Title -->
+        <b-navbar toggleable="lg" type="light" variant="light">
+            <b-navbar-brand href="/">
+                <img src="img/175538168.jpg" width="30" height="30" class="d-inline-block align-top" alt="Kitten">
+                中華大學圖資處教學研究組範例爬蟲網頁
+            </b-navbar-brand>
+        </b-navbar>
+        <!-- Context -->
+        <b-container>
+            <b-table striped hover :items="items"></b-table>
+        </b-container>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+
+    <!-- Start running your app -->
+    <script>
+        window.app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                items: [{
+                        age: 40,
+                        first_name: 'Dickerson',
+                        last_name: 'Macdonald'
+                    },
+                    {
+                        age: 21,
+                        first_name: 'Larsen',
+                        last_name: 'Shaw'
+                    },
+                    {
+                        age: 89,
+                        first_name: 'Geneva',
+                        last_name: 'Wilson'
+                    },
+                    {
+                        age: 38,
+                        first_name: 'Jami',
+                        last_name: 'Carney'
+                    }
+                ]
+            },
+            computed: {
+                showAlert() {
+                    return this.name.length > 4 ? true : false
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>
